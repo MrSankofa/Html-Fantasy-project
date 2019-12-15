@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-sm-12" style="background-color: green;">
+            <div class="" <h2>Fantasy Wire 
+                <p>The .table-hover class enables a hover state on table rows:</p>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>Projected Pts</th>
+                            <th>Avaiable Player</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Name QB</td>
+                            <td>25</td>
+                            <td>john@example.com</td>
+
+                        </tr>
+                        <tr>
+                            <td>Name RB</td>
+                            <td>17</td>
+                            <td>mary@example.com</td>
+                        </tr>
+                        <tr>
+                            <td>Name RB</td>
+                            <td>16</td>
+                            <td>july@example.com</td>
+
+
+                        </tr>
+                        <tr>
+                            <td>name flex</td>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <td>NAme WR1</td>
+                            <td>9</td>
+
+                        </tr>
+                        <tr>
+                            <td>Name WR2
+                            <td>9</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</body>
+
+</html>

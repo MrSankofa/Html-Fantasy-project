@@ -1,0 +1,20 @@
+.Header {
+    font-size: 34px;
+}
+.sliderImg{
+    width: 30px
+
+}
+//The controls for the search button to search plauer by name
+.Player search 
+{<label>
+    Player
+  <input type="text" name="Player">
+</label>
+}
+//Controls for search button to search players by position,
+<select name="Player">
+  <option value="QB">Phillip Rivers</option>
+  <option value="RB" selected>Chris Thompson'</option>
+  <option value="WR">Robert Woods</option>
+</select>
