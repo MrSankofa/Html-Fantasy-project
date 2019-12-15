@@ -1,43 +1,263 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>Document</title>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    ​
+    <title>Fantasy Football</title>
 </head>
+
 <body>
-    <div class="container">
-        <h2>Hover Rows</h2>
-        <p>The .table-hover class enables a hover state on table rows:</p>            
-        <table class="table table-hover">
-          <thead>
+    <h2>Team: Midnight Marauders</h2>
+    <p>
+        Playing in the WilFork You Up League
+    </p>
+    <table class="table table-striped table-hover table-bordered col-md-8" id="team">
+        <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Projections</th>
+                <th>Opponent</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr>
-            <tr>
-              <td>Mary</td>
-              <td>Moe</td>
-              <td>mary@example.com</td>
-            </tr>
-            <tr>
-              <td>July</td>
-              <td>Dooley</td>
-              <td>july@example.com</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    
+        </thead>
+        <tbody id="playersNode">
+
+        </tbody>
+    </table>
+
+
+
+
 </body>
+<script>
+    var myTeam = {
+        QB: {
+            proj: 25,
+            opp: 'HOU (28th)',
+            name: 'Ryan Tannehill'
+        },
+        RB1: {
+            proj: 17,
+            opp: 'MIA (28th)',
+            name: 'Saquon Barkley'
+        },
+        RB2: {
+            proj: 16,
+            opp: 'LAC (21st)',
+            name: 'Dalvin Cook'
+        },
+        WR1: {
+            proj: 9,
+            opp: 'MIN (22nd)',
+            name: 'Keenan Allen'
+        },
+        WR2: {
+            proj: 9,
+            opp: 'LAR (6th)',
+            name: 'Michael Gallup'
+        }
+    };
+    var waiverPlayers = {
+        QB: {
+            proj: 24,
+            opp: 'MIA',
+            name: 'Eli Manning'
+        },
+        RB: {
+            proj: 7,
+            opp: 'DEN',
+            name: 'Lesean McCoy'
+        },
+        RB2: {
+            proj: 8,
+            opp: 'PHI',
+            name: 'Chris Thompson'
+        },
+        WR1: {
+            proj: 10,
+            opp: 'DAL',
+            name: 'Robert Woods'
+        },
+        WR2: {
+            proj: 8,
+            opp: 'PHI',
+            name: 'Terry McLaurin'
+        }
+    };
+
+    function makeTable() {
+        // get the listContainer => tbody
+
+        // listElement => tr ?
+
+        // listItem => td ?
+
+        // loop through the list of players
+        const tbodyElement = document.getElementsByTagName('tbody')[0];
+
+        let tRow;
+        let tdName;
+        let tdOpp;
+        let tdProj;
+        let tdPos;
+        var key;
+        for (key in myTeam) {
+            // create a new tr
+            tRow = document.createElement('tr');
+            var QB, RB1, RB2, WR1, WR2;
+
+            tRow.setAttribute('class', 'myTeam');
+            // create 4 children td elements
+            tdPos = document.createElement('td');
+            tdName = document.createElement('td');
+            tdProj = document.createElement('td');
+            tdOpp = document.createElement('td');
+
+            // update the innerText for each td elements appropriately
+            // object[key]
+            tdPos.innerText = key;
+            tdName.innerText = myTeam[key]['name'];
+            tdOpp.innerText = myTeam[key]['opp'];
+            tdProj.innerText = myTeam[key]['proj'];
+            tRow.appendChild(tdPos);
+            tRow.appendChild(tdName);
+            tRow.appendChild(tdProj);
+            tRow.appendChild(tdOpp);
+            tbodyElement.appendChild(tRow);
+        }
+    }
+    makeTable();
+    function makeWaiverTable() {
+
+        const t2Body = document.createElement('tbody');
+        let tRow;
+        let tdName;
+        let tdOpp;
+        let tdProj;
+        let tdPos;
+        var key;
+
+        for (key in waiverPlayers) {
+            tRow = document.createElement('tr');
+            var QB, RB1, RB2, WR1, WR2;
+
+            tRow.setAttribute('class', 'waiverPlayers');
+            // create 4 children td elements
+            tdPos = document.createElement('td');
+            tdName = document.createElement('td');
+            tdProj = document.createElement('td');
+            tdOpp = document.createElement('td');
+
+            // update the innerText for each td elements appropriately
+            // object[key]
+            tdPos.innerText = key;
+            tdName.innerText = waiverPlayers[key]['name'];
+            tdOpp.innerText = waiverPlayers[key]['opp'];
+            tdProj.innerText = waiverPlayers[key]['proj'];
+            tRow.appendChild(tdPos);
+            tRow.appendChild(tdName);
+            tRow.appendChild(tdProj);
+            tRow.appendChild(tdOpp);
+            t2Body.appendChild(tRow);
+        }
+        const table2 = document.createElement('table');
+        table2.setAttribute(
+            'class',
+            'table table-striped table-hover table-bordered col-md-8'
+        );
+        table2.setAttribute('id', 'secondTable');
+        const trHead = document.createElement('thead');
+        const t2R = document.createElement('tr');
+        const tableHeadPos = document.createElement('th');
+        const tableHeadName = document.createElement('th');
+        const tableHeadProj = document.createElement('th');
+        const tableHeadOpp = document.createElement('th');
+
+        tableHeadPos.innerText = 'Position';
+        tableHeadName.innerText = 'Name';
+        tableHeadProj.innerText = 'Projections';
+        tableHeadOpp.innerText = 'Opponent';
+
+        t2R.appendChild(tableHeadPos);
+        t2R.appendChild(tableHeadName);
+        t2R.appendChild(tableHeadProj);
+        t2R.appendChild(tableHeadOpp);
+        trHead.appendChild(t2R);
+        table2.appendChild(trHead);
+        table2.appendChild(t2Body);
+
+        const bodyElement = document.getElementsByTagName('body')[0];
+        bodyElement.appendChild(table2);
+    }
+
+    makeWaiverTable();
+    var tRows = document.getElementsByTagName('tr');
+
+
+    for (var i = 0; i < tRows.length; i++) {
+        tRows[i].onclick = event => {
+            clickHandler(event);
+        };
+    }
+
+    let clickedWaiver = 0;
+    let clickedTeam = 0;
+    let positionClicked;
+    let previousClick;
+    let previousClickedPos;
+
+
+    function clickHandler(event) {
+        positionClicked = event.target.parentElement.firstChild.innerHTML;
+        var clickedRow = event.target.parentElement;
+        var clickedTable = event.target.parentElement.className;
+
+        // only allow one click per table
+        if (clickedTable === 'myTeam' && clickedTeam < 1) {
+            clickedTeam++;
+            clickedRow.setAttribute('style', 'background-color: lightGreen;');
+            previousClick = event.target.parentElement;
+        } else if (clickedTable === 'myTeam' && clickedTeam === 1) {
+            clickedRow.setAttribute('style', 'background-color: none;');
+            clickedTeam--;
+        } else if (clickedTable === 'waiverPlayers' && clickedWaiver < 1) {
+            clickedWaiver++;
+            clickedRow.setAttribute('style', 'background-color: lightGreen;');
+        } else if (clickedTable === 'waiverPlayers' && clickedWaiver === 1) {
+            clickedWaiver--;
+            clickedRow.setAttribute('style', 'background-color: none;');
+        }
+
+        if (clickedWaiver + clickedTeam === 2) {
+            previousClick.className;
+            const objToSwap = previousClick.className;
+            // console.log('objToSwap:', objToSwap);
+            const posToSwap1 = previousClick.firstChild.innerHTML;
+            // console.log('posToSwap1:', posToSwap1);
+            if (objToSwap === 'myTeam') {
+                console.log('team:', myTeam);
+                console.log('waiverPlayers:', waiverPlayers);
+
+                const temp = waiverPlayers[posToSwap1];
+                waiverPlayers[posToSwap1] = myTeam[posToSwap1];
+                myTeam[posToSwap1] = temp;
+                // console.log('myTeam[posToSwap1]:', myTeam[posToSwap1]);
+                document.getElementById('playersNode').innerHTML = '';
+                document.getElementById('secondTable').remove();
+                makeTable();
+                makeWaiverTable();
+                console.log('team:', myTeam);
+                console.log('waiverPlayers:', waiverPlayers);
+            }
+        }
+
+
+
+    }
+</script>
+
 </html>
